@@ -251,18 +251,20 @@ export default function Home({ user }: { user: SteamProfile }) {
         </div>
       </nav>
       <div className="flex flex-col gap-5">
-        <Slider />
-        <div className="flex flex-wrap gap-5 justify-between">
+        <Slider />  
+        <div className="flex flex-wrap gap-7 justify-between">
           {data.map((item) => (
             <div key={item.id} className="flip-card w-[300px] h-[380px]">
               <div className="flip-card-inner relative w-[100%] h-[100%] text-center m-0">
-                <div className="flip-card-front">
-                  <div className="flex flex-col">
-                    <p className="text-black font-bold text-3xl border-b-8">{item.name}</p>
+                <div className="flip-card-front  border-white border-solid border-2 bg-zinc-800">
+                  <div className="flex flex-col justify-between h-full">
+                    <p className="text-white font-bold text-3xl border-b-8 mt-2 pb-2 ">{item.name}</p>
+                        <img alt='mp-103' src="https://i.ibb.co/K2pjGbW/MP-153mod.webp" className='h-[100%] border-b-8'/>
+                    <p className="text-white font-bold text-2xl text-center py-6">{item.price} RUB</p>
                   </div>
                 </div>
-                <div className="flip-card-back">
-                  <p className="text-black font-bold text-base">{item.description}</p>
+                <div className="flip-card-back border-white border-solid border-2 bg-zinc-800">
+                  <p className="text-white font-bold text-base">{item.description}</p>
                 </div>
               </div>
             </div>
