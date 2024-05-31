@@ -73,7 +73,7 @@ export default function Home() {
   ];
 
   return (
-    <div className="h-[100vh]">
+    <div className="">
       <MainSection scrollToInstructions={scrollToInstructions} />
       <div ref={instructionsRef}>
         <DownloadSection scrollToAboutServer={scrollToAboutServer} />
@@ -93,7 +93,7 @@ export default function Home() {
           <FeatureSection features={features.slice(6, 8)} inView={inView4} />
         </div>
       </div>
-      <h1 className="mb-4 text-3xl font-extrabold leading-none tracking-tight text-white">
+      <h1 className="mb-4 text-3xl font-extrabold leading-none tracking-tight text-white text-center mt-5">
         И многое, многое другое....
       </h1>
     </div>
