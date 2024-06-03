@@ -118,8 +118,8 @@ export default function Faq() {
       ))}
       {displayedDialogues.length < dialogues.length && (
         <div
-          className={`flex justify-${
-            dialogues[displayedDialogues.length]?.name === 'Администрация' ? 'end' : 'start'
+          className={`flex ${
+            dialogues[displayedDialogues.length]?.name === 'Администрация' ? 'justify-end' : 'justify-start'
           } items-center gap-4 mx-[10%]`}
         >
           <Image
