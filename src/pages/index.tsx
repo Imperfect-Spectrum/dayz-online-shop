@@ -79,7 +79,9 @@ export default function Home() {
         <DownloadSection scrollToAboutServer={scrollToAboutServer} />
       </div>
       <div ref={aboutServerRef} className="flex flex-col items-center justify-center gap-10">
-        <h1 className="mb-4 text-5xl font-extrabold leading-none tracking-tight text-white">Что есть у нас?</h1>
+        <h1 className="mb-4 text-5xl font-extrabold leading-none tracking-tight text-gray-800 dark:text-white">
+          Что есть у нас?
+        </h1>
         <div ref={ref1}>
           <FeatureSection features={features.slice(0, 2)} inView={inView1} />
         </div>
@@ -93,7 +95,7 @@ export default function Home() {
           <FeatureSection features={features.slice(6, 8)} inView={inView4} />
         </div>
       </div>
-      <h1 className="mb-4 text-3xl font-extrabold leading-none tracking-tight text-white text-center mt-5">
+      <h1 className="mb-4 text-3xl font-extrabold leading-none tracking-tight text-gray-800 dark:text-white text-center mt-5">
         И многое, многое другое....
       </h1>
     </div>

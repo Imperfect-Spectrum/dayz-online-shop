@@ -18,50 +18,13 @@ export function Header() {
     { href: 'https://discord.com/invite/CT7Bn6ZmXu', label: 'ЧАВО' },
   ];
 
-  const renderLinks = () =>
-    links.map((link, index) => (
-      <a key={index} href={link.href} className="block py-2 md:py-0 md:ml-6">
-        {link.label}
-      </a>
-    ));
-
   return (
-    // <div className="my-5">
-    //   <title>Lasthope Stalker RP</title>
-    //   <div className="flex justify-between items-center">
-    // <div className="flex items-center space-x-3">
-    //   <Image src="/logo.png" width={100} height={100} alt="Last Hope Logo" />
-    //   <span className="self-center text-3xl font-semibold whitespace-nowrap">Last Hope</span>
-    // </div>
-    //     <nav className="">
-    //       <div className="w-full" id="navbar-default">
-    //         <ul className="font-medium flex flex-col justify-center items-center p-4 md:p-0 mt-4 border rounded-lg md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0">
-    //           {links.map((link) => (
-    //             <li key={link.label} className="mt-4 md:mt-0">
-    //               <a
-    //                 target="_blank"
-    //                 href={link.href}
-    //                 className="text-xl block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
-    //               >
-    //                 {link.label}
-    //               </a>
-    //             </li>
-    //           ))}
-    //         </ul>
-    //       </div>
-    //     </nav>
-    //     <div className="xl:hidden flex">
-    //       {isOpen ? <X onClick={() => setIsOpen(!isOpen)} /> : <Menu onClick={() => setIsOpen(!isOpen)} />}
-    //     </div>
-    //     <ModeToggle />
-    //   </div>
-    // </div>
-
     <div className="my-5 flex items-center mr-auto">
       <div className="flex items-center space-x-3">
         <Image src="/logo.png" width={100} height={100} alt="Last Hope Logo" />
         <span className="self-center text-3xl font-semibold whitespace-nowrap">Last Hope</span>
       </div>
+
       {/* Десктопное меню, отображается только на больших экранах */}
       <div className="hidden xl:flex justify-between items-center p-4 mx-auto">
         <nav className="flex justify-center items-center mx-auto">

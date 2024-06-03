@@ -1,3 +1,3 @@
 export function Footer() {
-  return <div className="mt-auto">ывфыв</div>;
+  return <div className="flex mt-auto mt-10"></div>;
 }
