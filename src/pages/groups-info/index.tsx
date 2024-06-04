@@ -42,6 +42,10 @@ export default function GroupsInfo() {
         },
       ],
       img: 'https://static.wikia.nocookie.net/stalker_ru_gamepedia/images/a/a1/%D0%93%D0%B5%D1%80%D0%B1.png/revision/latest?cb=20170724225326',
+      caruselImg: [
+        'https://static.wikia.nocookie.net/stalker_ru_gamepedia/images/a/a1/%D0%93%D0%B5%D1%80%D0%B1.png/revision/latest?cb=20170724225326',
+        'https://static.wikia.nocookie.net/stalker_ru_gamepedia/images/a/a1/%D0%93%D0%B5%D1%80%D0%B1.png/revision/latest?cb=20170724225326',
+      ],
     },
   ];
   return (
@@ -136,19 +140,17 @@ export default function GroupsInfo() {
                   <p className="text-xl font-semibold dark:text-white">{item.structure}</p>
                 </div>
               </div>
-              {/* <div className="flex flex-col gap-5 justify-center mr-auto">
-              <p className="text-xl font-bold dark:text-white">
+              <div className="flex flex-col gap-5 justify-center">
                 <h4 className="text-2xl font-bold dark:text-white">Особенности группировки:</h4>
-              </p>
-              <ul className="max-w-md space-y-1 text-gray-500 list-disc list-inside dark:text-gray-400">
-                {item.features.map((item, index) => (
-                  <li className="text-xl font-semibold dark:text-white" key={index}>
-                    {item.name}
-                    <p className="text-xl font-semibold dark:text-white">{item.description}</p>
-                  </li>
-                ))}
-              </ul>
-            </div> */}
+                <ul className="flex flex-col gap-5 space-y-1 text-gray-500 list-disc list-inside dark:text-gray-400 border-l-8 border-gray-500 pl-8">
+                  {item.features.map((item, index) => (
+                    <li className="text-xl font-semibold dark:text-white" key={index}>
+                      {item.name}
+                      <p className="text-xl font-semibold dark:text-white">{item.description}</p>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
           </div>
         ))}

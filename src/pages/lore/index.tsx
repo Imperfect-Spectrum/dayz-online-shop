@@ -2,7 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 function Lore() {
-  const group = [
+  const groups = [
     {
       name: 'Нейтралы',
       imageUrl: 'https://i.ibb.co/xSYTpvB/neutrals-logo.png',
@@ -80,7 +80,7 @@ function Lore() {
         Лор группировок нашего сервера
       </h1>
       <div className="flex flex-wrap items-center justify-center gap-14">
-        {group.map((item, index) => (
+        {groups.map((item, index) => (
           <div key={index}>
             <h1 className="text-3xl font-extrabold leading-none tracking-tight text-gray-800 dark:text-white text-center mb-2">
               {item.name}
