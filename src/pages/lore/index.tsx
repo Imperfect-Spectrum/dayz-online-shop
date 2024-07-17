@@ -6,74 +6,75 @@ function Lore() {
     {
       name: 'Нейтралы',
       imageUrl: 'https://i.ibb.co/xSYTpvB/neutrals-logo.png',
-      pathUrl: 'resource1',
+      pathUrl: 'neutrals',
     },
     {
       name: 'Люди Бармена',
       imageUrl: 'https://i.ibb.co/cXg3bxd/lb-logo.png',
-      pathUrl: 'resource2',
+      pathUrl: 'lb',
     },
     {
       name: 'Чистое Небо',
       imageUrl: 'https://i.ibb.co/D1d8FdM/rassvet-logo.png',
-      pathUrl: 'resource3',
+      pathUrl: 'rassvet',
     },
     {
       name: 'ОКСОП',
       imageUrl: 'https://i.ibb.co/XXBYC6G/oksop-logo.png',
-      pathUrl: 'resource4',
+      pathUrl: 'oksop',
     },
     {
       name: 'Грех',
       imageUrl: 'https://i.ibb.co/3k2ZSfd/greh-logo.png',
-      pathUrl: 'resource5',
+      pathUrl: 'greh',
     },
     {
       name: 'Ренегаты',
       imageUrl: 'https://i.ibb.co/hVMbLwh/renegati-logo.png',
-      pathUrl: 'resource6',
+      pathUrl: 'renegati',
     },
     {
       name: 'Монолит',
       imageUrl: 'https://i.ibb.co/QnzLHD6/monolit-logo.png',
-      pathUrl: 'resource7',
+      pathUrl: 'monolit',
     },
     {
       name: 'Охрана Деревни',
       imageUrl: 'https://i.ibb.co/zNcWRzb/odinochki-logo.png',
-      pathUrl: 'resource8',
+      pathUrl: 'odinochki',
     },
     {
       name: 'Ученые',
       imageUrl: 'https://i.ibb.co/zsZfm2m/ychenie-logo.png',
-      pathUrl: 'resource9',
+      pathUrl: 'nayka',
     },
     {
       name: 'Наемники',
       imageUrl: 'https://i.ibb.co/2nxD54Z/naemniki-logo.png',
-      pathUrl: 'resource10',
+      pathUrl: 'naemniki',
     },
     {
       name: 'Братва',
       imageUrl: 'https://i.ibb.co/t85RLXX/bratva-logo.png',
-      pathUrl: 'resource11',
+      pathUrl: 'bratva',
     },
     {
       name: 'Свобода',
       imageUrl: 'https://i.ibb.co/hB8sdY9/svoboda-logo.png',
-      pathUrl: 'resource12',
+      pathUrl: 'svoboda',
     },
     {
       name: 'Долг',
       imageUrl: 'https://i.ibb.co/Fnr4dVZ/dolg-logo.png',
-      pathUrl: 'resource13',
+      pathUrl: 'dolg',
     },
     {
       name: 'Военные сталкеры',
       imageUrl: 'https://i.ibb.co/4870kNR/voenstalker-logo.png',
-      pathUrl: 'resource14',
+      pathUrl: 'voenstalker',
     },
   ];
+
   return (
     <div className="pb-5 w-[100%] flex flex-col items-center justify-center">
       <h1 className="mb-12 text-4xl font-extrabold leading-none tracking-tight text-gray-800 dark:text-white text-center mt-5">
@@ -81,13 +82,20 @@ function Lore() {
       </h1>
       <div className="flex flex-wrap items-center justify-center gap-14">
         {groups.map((item, index) => (
-          <div key={index}>
+          <div key={index} className=" transition duration-500 hover:scale-125">
             <h1 className="text-3xl font-extrabold leading-none tracking-tight text-gray-800 dark:text-white text-center mb-2">
               {item.name}
             </h1>
-            <Link href={`/${item.pathUrl}`}>
-              <button className="flex items-center justify-center hover:ring-4 ring-slate-600 rounded-3xl">
-                <Image className="object-cover" width={350} height={350} src={item.imageUrl} alt={item.name} />
+            <Link href={`/lore/${item.pathUrl}`}>
+              <button className="flex items-center justify-centerrounded-3xl">
+                <Image
+                  className="object-cover"
+                  width={350}
+                  height={350}
+                  src={item.imageUrl}
+                  alt={item.name}
+                  loading="lazy"
+                />
               </button>
             </Link>
           </div>
@@ -98,3 +106,10 @@ function Lore() {
 }
 
 export default Lore;
+
+// export async function getServerSideProps() {
+//   const dataRes = await fetch(`https://api.opendota.com/api/matches/${matchesID}`);
+//   const data = await dataRes.json();
+
+//   return { props: { data: { data } } };
+// }

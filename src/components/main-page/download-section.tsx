@@ -29,7 +29,7 @@ export const DownloadSection = ({ scrollToAboutServer }: DownloadSectionProps) =
   ];
 
   return (
-    <div className="bg-[url('https://i.ibb.co/p3QszHQ/bg-2.png')] bg-cover bg-center h-[900px] flex flex-col items-center justify-center text-center mb-24">
+    <div className="bg-[url('https://i.ibb.co/xGB8k7r/bg-2.png')] bg-cover bg-center h-[900px] flex flex-col items-center justify-center text-center mb-24">
       <h2 className="mb-6 text-4xl font-bold leading-none tracking-tight text-white">Загрузите и установите</h2>
       <div className="flex flex-wrap  justify-center gap-10 sm:mb-6 mb-10">
         {downloads.map((download) => (

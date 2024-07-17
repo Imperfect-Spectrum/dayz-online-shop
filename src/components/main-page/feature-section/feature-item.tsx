@@ -20,6 +20,7 @@ export const FeatureItem = ({ feature, inView }: FeatureItemProps) => (
         className="h-auto max-w-full rounded-lg"
         src={feature.image}
         alt={feature.altText}
+        loading="lazy"
         width={700}
         height={700}
       />

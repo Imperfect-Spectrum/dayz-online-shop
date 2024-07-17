@@ -8,6 +8,7 @@ export default function GroupsInfo() {
     {
       id: 1,
       name: 'Долг',
+      value: 'dolg',
       founder: 'генерал Таченко',
       description: 'Долг — военизированная группировка, члены которой живут по чёткому воинскому уставу.',
       motto: 'Защитим мир от Зоны!',
@@ -48,6 +49,7 @@ export default function GroupsInfo() {
       ],
     },
   ];
+
   return (
     <div className="mx-[10%] h-[100vh]">
       <div className="flex flex-col gap-10">

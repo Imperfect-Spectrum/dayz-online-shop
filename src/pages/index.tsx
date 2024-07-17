@@ -1,7 +1,7 @@
 import { DownloadSection } from '@/components/main-page/download-section';
 import { FeatureSection } from '@/components/main-page/feature-section/feature-section';
 import { MainSection } from '@/components/main-page/main-section';
-import React, { useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useInView } from 'react-intersection-observer';
 
 export default function Home() {
@@ -24,7 +24,7 @@ export default function Home() {
   const features = [
     {
       title: 'Необычная экипировка',
-      image: 'https://i.ibb.co/NYwZCRq/guns-jpg.png',
+      image: 'https://i.ibb.co/p3X0PK5/image.png',
       altText: 'guns-png',
       inView: inView1,
     },
@@ -36,13 +36,13 @@ export default function Home() {
     },
     {
       title: 'Аномалии',
-      image: 'https://i.ibb.co/mhTtdhD/anomaly.png',
+      image: 'https://i.ibb.co/W5Mdwvc/image.png',
       altText: 'anomaly-png',
       inView: inView2,
     },
     {
       title: 'Артефакты',
-      image: 'https://i.ibb.co/F6JsrzP/artefact.png',
+      image: 'https://i.ibb.co/m0BWyCM/image-2024-07-11-19-06-05.png',
       altText: 'artefact-png',
       inView: inView2,
     },

@@ -1,40 +1,46 @@
-import Link from 'next/link';
-import { NextApiRequest, NextApiResponse } from 'next';
-import { SteamProfile } from '@/lib/passport';
-import router, { NextSteamAuthApiRequest } from '@/lib/router';
-import { steamStore } from '@/stores/steamStore';
+import { GetServerSidePropsContext, GetServerSidePropsResult } from 'next';
+import { Session } from 'next-auth';
+import { getServerSession } from 'next-auth/next';
+import { signIn } from 'next-auth/react';
+import { useEffect } from 'react';
 
-export default function Login({ user }: { user: SteamProfile }) {
-  console.log(user); // Shows the SteamProfile object in console.
+export interface IProps {
+  // next.js is not passing the session for some reason if property called `session`
+  userSession: Session | null;
+}
+
+export default function Login({ userSession }: IProps) {
+  useEffect(() => {
+    if (!userSession?.user) {
+      signIn();
+    }
+  }, [userSession]);
+
+  if (!userSession?.user) {
+    return <div>Youre not authenticated</div>;
+  }
+
   return (
-    <div className="text-center text-yellow-500 text-3xl">
-      {user ? (
-        <div>
-          SteamID {user.id}.
-          <button className="h-16 w-36 bg-cyan-600">
-            <Link href="/api/auth/logout">Logout</Link>
-          </button>
-        </div>
-      ) : (
-        <div>
-          Welcome!
-          <br />
-          <button className="h-16 w-36 bg-cyan-600">
-            <Link href="/api/auth/login">Login</Link>
-          </button>
-        </div>
-      )}
+    <div>
+      <h1>next-auth-steam</h1>
+      <pre>{JSON.stringify(userSession, null, 2)}</pre>
     </div>
   );
 }
 
-export async function getServerSideProps({ req, res }: { req: NextSteamAuthApiRequest; res: NextApiResponse }) {
-  await router.run(req, res);
-  const user = req.user || null;
+export async function getServerSideProps(
+  context: GetServerSidePropsContext
+): Promise<GetServerSidePropsResult<IProps>> {
+  const userSession = await getServerSession(
+    context.req,
+    context.res,
+    // @ts-expect-error
+    getAuthOptions(context.req)
+  );
 
-  if (user) {
-    steamStore.setSteamID(user.id);
-  }
-
-  return { props: { user } };
+  return {
+    props: {
+      userSession,
+    },
+  };
 }
