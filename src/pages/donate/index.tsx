@@ -1,11 +1,9 @@
 import React from 'react';
-import router, { NextSteamAuthApiRequest } from '@/lib/router';
 import { NextApiResponse } from 'next';
-import { SteamProfile } from '@/lib/passport';
 import { Slider } from '@/components/carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import Image from 'next/image';
-import { steamStore } from '@/stores/steamStore';
+
 interface Item {
   id: number;
   name: string;
@@ -16,9 +14,7 @@ interface Item {
   price: number;
 }
 
-export default function Donate({ user }: { user: SteamProfile }) {
-  console.log(user);
-
+export default function Donate() {
   const data: Item[] = [
     {
       id: 1,
@@ -360,23 +356,7 @@ export default function Donate({ user }: { user: SteamProfile }) {
             </div>
           ))}
         </div>
-        {user?.id ? (
-          <p className="text-orange-900 font-extrabold">steamID:{user.id}</p>
-        ) : (
-          <p className="text-orange-900 font-extrabold">Net SteamID!21</p>
-        )}
       </div>
     </div>
   );
-}
-
-export async function getServerSideProps({ req, res }: { req: NextSteamAuthApiRequest; res: NextApiResponse }) {
-  await router.run(req, res);
-  const user = req.user || null;
-
-  if (user) {
-    steamStore.setSteamID(user.id);
-  }
-
-  return { props: { user } };
 }

@@ -2778,6 +2778,13 @@ negotiator@^0.6.3:
   resolved "https://registry.yarnpkg.com/negotiator/-/negotiator-0.6.3.tgz#58e323a72fedc0d6f9cd4d31fe49f51479590ccd"
   integrity sha512-+EUsqGPLsM+j/zdChZjsnX51g4XrHFOIXwfnCVPGlQk/k5giakcKsuxCObBRu6DSm9opw/O6slWbJdghQM4bBg==
 
+next-auth-steam@^0.3.0:
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/next-auth-steam/-/next-auth-steam-0.3.0.tgz#4623c2cd027d877d371b74c029fac67160e71a22"
+  integrity sha512-YoUzTV2UXF1HYKEfEEch+3nqOOv47uIdbtVYzFXxm4ZUwtLV8TpDx8GspMKmzVunZhXuS+nT0RmVTTn2uA6stA==
+  dependencies:
+    openid "^2.0.12"
+
 next-auth@*, next-auth@^4.24.7:
   version "4.24.7"
   resolved "https://registry.yarnpkg.com/next-auth/-/next-auth-4.24.7.tgz#0a14c1e35b4a2c0c1ecff95c295b74bd48d3817a"
