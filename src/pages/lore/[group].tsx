@@ -1,18 +1,34 @@
-import { info } from '@/constants/lore';
+import { GetServerSideProps, NextPage } from 'next';
 import Image from 'next/image';
-import { useRouter } from 'next/router';
-import { Carousel } from 'react-responsive-carousel';
 
-const GroupPage = () => {
-  const router = useRouter();
-  const { group } = router.query;
+interface Feature {
+  name: string;
+  description: string;
+}
 
-  const data = info.find((item) => item.value.toLowerCase() === group);
+interface Item {
+  id: number;
+  name: string;
+  founder: string;
+  description: string;
+  motto: string;
+  value: string;
+  quote: string;
+  goals: string;
+  lifeInside: string;
+  structure: string;
+  features: Feature[];
+  img: string;
+  caruselImg: string;
+}
 
-  if (data) {
-    console.log('Найденный объект:', data);
-  } else {
-    console.log('Объект с указанным значением group.value не найден.');
+interface LorePageProps {
+  item: Item | null;
+}
+
+const GroupPage: NextPage<LorePageProps> = ({ item }) => {
+  if (!item) {
+    return <div>Loading...</div>;
   }
 
   return (
@@ -20,27 +36,27 @@ const GroupPage = () => {
       <div className="flex flex-col gap-10">
         <Image
           className="h-auto max-w-full rounded-lg object-cover"
-          src={data?.caruselImg || ''}
-          alt={data?.name || ''}
+          src={item?.caruselImg || ''}
+          alt={item?.name || ''}
           width={4000}
           height={4000}
         />
 
         <div className="flex xl:flex-nowrap flex-wrap justify-around gap-6 mt-2 ">
           <div className="w-[500px] flex flex-col xl:mr-10 mr-0 animate-slideInFromLeft text-center">
-            <h2 className="text-4xl font-extrabold dark:text-white text-center">{data?.name}</h2>
+            <h2 className="text-4xl font-extrabold dark:text-white text-center">{item?.name}</h2>
             <div className="flex flex-col items-center">
-              <Image className="rounded-lg" src={data?.img || ''} alt={data?.name || ''} width={300} height={300} />
+              <Image className="rounded-lg" src={item?.img || ''} alt={item?.name || ''} width={300} height={300} />
               <p className="mb-4 text-lg font-normal text-gray-500 dark:text-gray-400">Символ группировки</p>
             </div>
             <div className="flex gap-2">
               <p className="mb-4 text-xl font-normal text-gray-500 dark:text-gray-200 ">Основатель: </p>
-              <p className="mb-4 text-lg font-normal text-gray-500 dark:text-gray-400 ">{data?.founder}</p>
+              <p className="mb-4 text-lg font-normal text-gray-500 dark:text-gray-400 ">{item?.founder}</p>
             </div>
 
             <div className="flex gap-2">
               <p className="mb-4 text-xl font-normal text-gray-500 dark:text-gray-200 ">Девиз: </p>
-              <p className="mb-4 text-lg font-normal text-gray-500 dark:text-gray-400 ">{data?.motto}</p>
+              <p className="mb-4 text-lg font-normal text-gray-500 dark:text-gray-400 ">{item?.motto}</p>
             </div>
           </div>
 
@@ -60,7 +76,7 @@ const GroupPage = () => {
                   d="m18.75 4.5-7.5 7.5 7.5 7.5m-6-15L5.25 12l7.5 7.5"
                 />
               </svg>
-              <p className="text-xl font-bold dark:text-center">{data?.quote}</p>
+              <p className="text-xl font-bold dark:text-center">{item?.quote}</p>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -77,8 +93,8 @@ const GroupPage = () => {
                 <u>Описание и цели:</u>
               </h4>
               <div className="flex flex-col gap-5 border-l-8 border-gray-500 pl-8">
-                <p className="text-xl font-semibold dark:text-white">{data?.description}</p>
-                <p className="text-xl font-semibold dark:text-white">{data?.goals}</p>
+                <p className="text-xl font-semibold dark:text-white">{item?.description}</p>
+                <p className="text-xl font-semibold dark:text-white">{item?.goals}</p>
               </div>
             </div>
             <div className="flex flex-col gap-5 justify-center ml-auto text-right">
@@ -86,8 +102,8 @@ const GroupPage = () => {
                 <u>Жизнь и структура внутри:</u>
               </h4>
               <div className="flex flex-col gap-5 border-r-8 border-gray-500 pr-8">
-                <p className="text-xl font-semibold dark:text-white">{data?.goals}</p>
-                <p className="text-xl font-semibold dark:text-white">{data?.structure}</p>
+                <p className="text-xl font-semibold dark:text-white">{item?.goals}</p>
+                <p className="text-xl font-semibold dark:text-white">{item?.structure}</p>
               </div>
             </div>
             <div className="flex flex-col gap-5 justify-center">
@@ -95,7 +111,7 @@ const GroupPage = () => {
                 <u>Особенности группировки:</u>
               </h4>
               <ul className="flex flex-col gap-5 space-y-1 text-gray-500 list-disc list-inside dark:text-gray-400 border-l-8 border-gray-500 pl-8">
-                {data?.features.map((item: any, index: any) => (
+                {item?.features.map((item: any, index: any) => (
                   <li className="text-xl font-semibold dark:text-white" key={index}>
                     {item.name}
                     <p className="text-xl font-semibold dark:text-white">{item.description}</p>
@@ -111,3 +127,35 @@ const GroupPage = () => {
 };
 
 export default GroupPage;
+
+export const getServerSideProps: GetServerSideProps<LorePageProps> = async (context) => {
+  const { pathUrl } = context.params as { pathUrl: string };
+
+  try {
+    const response = await fetch('http://localhost:9090/restApi/groups/post', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ name: pathUrl }),
+    });
+
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+
+    const data: Item = await response.json();
+    return {
+      props: {
+        item: data,
+      },
+    };
+  } catch (error) {
+    console.error('Error fetching data:', error);
+    return {
+      props: {
+        item: null,
+      },
+    };
+  }
+};

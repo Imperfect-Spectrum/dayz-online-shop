@@ -21,7 +21,6 @@ import {
 import { useMemo } from 'react';
 
 export interface IProps {
-  // next.js is not passing the session for some reason if property called `session`
   userSession: Session | null;
 }
 
@@ -158,7 +157,7 @@ export default function Login({ userSession }: IProps) {
         Личная статистика
       </h1>
       <div className="flex justify-center w-[80%]">
-        <div className="flex flex-col text-center items-center justify-center mb-10 border-red-500 border-4 w-[20%]">
+        <div className="flex flex-col text-center items-center justify-center mb-10 w-[20%]">
           <p className="text-2xl font-extrabold dark:text-white text-center mb-10">Информация об аккаунте</p>
           <Image
             width={100}
@@ -175,7 +174,7 @@ export default function Login({ userSession }: IProps) {
             </div>
             <div className="flex gap-2">
               <p className="text-2xl font-medium dark:text-white text-center">SteamID: </p>
-              <p className="text-2xl font-bold dark:text-white text-center">{userSession.user.steam?.steamid || ''}</p>
+              <p className="text-2xl font-bold dark:text-white text-center">steamID</p>
             </div>
             <div className="flex gap-2">
               <p className="text-2xl font-medium dark:text-white text-center">Последнее имя: </p>
@@ -191,7 +190,7 @@ export default function Login({ userSession }: IProps) {
             Выйти из аккаунта
           </Button>
         </div>
-        <div className="border-green-500 border-4 w-[80%]">
+        <div className=" w-[80%]">
           <p className="text-2xl font-extrabold dark:text-white text-center mb-10">Личная статистика</p>
           <div className="flex flex-wrap justify-center items-center gap-10">
             <div className="h-20 bg-white shadow-md flex items-center justify-center rounded-lg p-2.5 text-black w-[25%]">
@@ -255,7 +254,7 @@ export default function Login({ userSession }: IProps) {
           </div>
         </div>
       </div>
-      <div className="flex justify-center w-[80%] border-4 border-yellow-700 h-[500px]">
+      <div className="flex justify-center w-[80%]  h-[500px]">
         <ScrollArea className=" w-[25%] rounded-md border">
           <div className="p-4">
             <h4 className="mb-4 text-xl font-medium leading-none">История имен: </h4>
