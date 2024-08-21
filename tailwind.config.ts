@@ -64,17 +64,43 @@ const config = {
         },
         'slide-in-left': {
           from: {
+            opacity: '0',
             transform: 'translateX(-100%)',
           },
           to: {
+            opacity: '1',
             transform: 'translateX(0)',
+          },
+        },
+        'slide-in-right': {
+          from: {
+            opacity: '0',
+            transform: 'translateX(100%)',
+          },
+          to: {
+            opacity: '1',
+            transform: 'translateX(0)',
+          },
+        },
+        slidein: {
+          from: {
+            opacity: '0',
+            transform: 'translateY(-10px)',
+          },
+          to: {
+            opacity: '1',
+            transform: 'translateY(0)',
           },
         },
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
-        'slide-in-left': 'slide-in-left 0.5s ease-out forwards',
+        'slide-in-left': 'slide-in-left 0.8s ease-out forwards',
+        'slide-in-right': 'slide-in-right 0.8s ease-out forwards',
+        slidein300: 'slidein 1s 300ms ease-out forwards',
+        slidein500: 'slidein 1s 500ms ease-out forwards',
+        slidein700: 'slidein 1s 700ms ease-out forwards',
       },
     },
   },

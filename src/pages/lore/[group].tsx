@@ -1,5 +1,6 @@
+import { infoJson } from '@/constants/constants';
 import { GetServerSideProps, NextPage } from 'next';
-import Image from 'next/image';
+import { useRouter } from 'next/router';
 
 interface Feature {
   name: string;
@@ -19,34 +20,33 @@ interface Item {
   structure: string;
   features: Feature[];
   img: string;
-  caruselImg: string;
+  caruselImg: string[];
 }
 
 interface LorePageProps {
   item: Item | null;
 }
 
-const GroupPage: NextPage<LorePageProps> = ({ item }) => {
-  if (!item) {
-    return <div>Loading...</div>;
-  }
+const GroupPage = () => {
+  const router = useRouter();
+  const { group } = router.query;
+  console.log('group', group);
 
+  const item = infoJson.find((item) => item.value === group) || null;
+
+  if (!item) {
+    return <p>Группировка не найдена.</p>;
+  }
   return (
     <div className="xl:mx-[10%] mx-[0%] h-[100vh]">
       <div className="flex flex-col gap-10">
-        <Image
-          className="h-auto max-w-full rounded-lg object-cover"
-          src={item?.caruselImg || ''}
-          alt={item?.name || ''}
-          width={4000}
-          height={4000}
-        />
+        <img className="h-auto max-w-full rounded-lg object-cover" src={item?.caruselImg} alt={item?.name} />
 
         <div className="flex xl:flex-nowrap flex-wrap justify-around gap-6 mt-2 ">
           <div className="w-[500px] flex flex-col xl:mr-10 mr-0 animate-slideInFromLeft text-center">
             <h2 className="text-4xl font-extrabold dark:text-white text-center">{item?.name}</h2>
             <div className="flex flex-col items-center">
-              <Image className="rounded-lg" src={item?.img || ''} alt={item?.name || ''} width={300} height={300} />
+              <img className="rounded-lg" src={item?.img} alt={item?.name} width="300" height="300" />
               <p className="mb-4 text-lg font-normal text-gray-500 dark:text-gray-400">Символ группировки</p>
             </div>
             <div className="flex gap-2">
@@ -128,34 +128,14 @@ const GroupPage: NextPage<LorePageProps> = ({ item }) => {
 
 export default GroupPage;
 
-export const getServerSideProps: GetServerSideProps<LorePageProps> = async (context) => {
-  const { pathUrl } = context.params as { pathUrl: string };
+// export const getServerSideProps: GetServerSideProps<LorePageProps> = async (context) => {
+//   const { group } = context.params as { group: string };
 
-  try {
-    const response = await fetch('http://localhost:9090/restApi/groups/post', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ name: pathUrl }),
-    });
+//   const item = infoJson.find((item) => item.value === group) || null;
 
-    if (!response.ok) {
-      throw new Error('Network response was not ok');
-    }
-
-    const data: Item = await response.json();
-    return {
-      props: {
-        item: data,
-      },
-    };
-  } catch (error) {
-    console.error('Error fetching data:', error);
-    return {
-      props: {
-        item: null,
-      },
-    };
-  }
-};
+//   return {
+//     props: {
+//       item,
+//     },
+//   };
+// };
