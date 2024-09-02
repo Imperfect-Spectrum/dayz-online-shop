@@ -3,7 +3,7 @@ import useIntersectionObserver from '@/hooks/useIntersectionObserver';
 
 export const FeatureSection = () => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
-  const refsArray = featuresData.map(() => useIntersectionObserver(0.1));
+  const refsArray = featuresData.map(() => useIntersectionObserver(0.5));
 
   return (
     <div className="">

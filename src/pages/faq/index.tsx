@@ -98,7 +98,7 @@ export default function Faq() {
     endOfMessagesRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [displayedDialogues]);
 
-  const isVisibleChat = true; // Эта переменная должна контролироваться вашим стейтом или пропсами
+  const isVisibleChat = true;
 
   if (!isVisibleChat) return null;
   return (
