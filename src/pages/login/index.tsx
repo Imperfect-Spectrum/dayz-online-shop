@@ -1525,7 +1525,6 @@ export default function Login({ userSession }: IProps) {
   }
 
   const transformedData = transformData(dataWeapons);
-  console.log(transformedData);
 
   return (
     <div className="pb-5 w-[100%] flex flex-col items-center justify-center gap-5">
@@ -1731,7 +1730,7 @@ export async function getServerSideProps(
 ): Promise<GetServerSidePropsResult<IProps>> {
   // @ts-expect-error
   const userSession = await getServerSession(context.req, context.res, getAuthOptions(context.req));
-
+  console.log(userSession?.user.steam);
   return {
     props: {
       userSession,
