@@ -15,11 +15,16 @@ import { forwardRef } from 'react';
 
 export default function NavMenu() {
   return (
-    <NavigationMenu className="hidden xl:flex justify-between items-center p-4 mx-auto">
-      <NavigationMenuList className="flex justify-center items-center mx-auto">
+    <NavigationMenu className="hidden lg:flex justify-between items-center p-4 mx-auto">
+      <NavigationMenuList className="flex flex-wrap justify-center items-center mx-auto">
         <NavigationMenuItem>
           <Link href="/" legacyBehavior passHref>
             <NavigationMenuLink className={navigationMenuTriggerStyle()}>На главную</NavigationMenuLink>
+          </Link>
+        </NavigationMenuItem>
+        <NavigationMenuItem>
+          <Link href="/login" legacyBehavior passHref>
+            <NavigationMenuLink className={navigationMenuTriggerStyle()}>Личный кабинет </NavigationMenuLink>
           </Link>
         </NavigationMenuItem>
         <NavigationMenuItem>

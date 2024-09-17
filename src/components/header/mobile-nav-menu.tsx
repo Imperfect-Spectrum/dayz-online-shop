@@ -31,6 +31,11 @@ export default function MonileNavMenu({ isOpen }: MonileNavMenuProps) {
           </Link>
         </NavigationMenuItem>
         <NavigationMenuItem>
+          <Link href="/login" legacyBehavior passHref>
+            <NavigationMenuLink className={navigationMenuTriggerStyle()}>Личный кабинет </NavigationMenuLink>
+          </Link>
+        </NavigationMenuItem>
+        <NavigationMenuItem>
           <Link href="/about-us" legacyBehavior passHref>
             <NavigationMenuLink className={navigationMenuTriggerStyle()}>О нас</NavigationMenuLink>
           </Link>
