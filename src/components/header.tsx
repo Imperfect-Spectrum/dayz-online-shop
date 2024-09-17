@@ -5,18 +5,27 @@ import { Menu, X } from 'lucide-react';
 import Link from 'next/link';
 import NavMenu from './header/nav-menu';
 import MonileNavMenu from './header/mobile-nav-menu';
+import TitleLogo from './header/titleLogo';
+import { Button } from './ui/button';
+import { useRouter } from 'next/router';
 
 export function Header() {
+  const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
+  const [pathURL, setPathURL] = useState('');
+
+  useEffect(() => {
+    if (!router.isReady) return;
+    setPathURL(router.pathname);
+  }, [router.isReady, router.pathname]);
+
+  useEffect(() => {
+    setIsOpen(false);
+  }, [pathURL]);
 
   return (
     <div className="my-5 flex items-center mr-auto">
-      <Link href="/">
-        <div className="flex items-center space-x-3">
-          <Image src="/logo.png" width={100} height={100} alt="Last Hope Logo" className="rounded-3xl" />
-          <span className="self-center text-2xl md:text-3xl font-semibold whitespace-nowrap">Last Hope</span>
-        </div>
-      </Link>
+      <TitleLogo />
 
       <NavMenu />
 
