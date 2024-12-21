@@ -1,13 +1,10 @@
+'use client';
 import { useEffect, useState } from 'react';
-import { ModeToggle } from './ModeToggle';
-import Image from 'next/image';
-import { Menu, X } from 'lucide-react';
-import Link from 'next/link';
-import NavMenu from './header/nav-menu';
-import MonileNavMenu from './header/mobile-nav-menu';
-import TitleLogo from './header/titleLogo';
-import { Button } from './ui/button';
 import { useRouter } from 'next/router';
+import TitleLogo from './header/titleLogo';
+import { ModeToggle } from './ModeToggle';
+import DesktopMenu from './header/nav-menu/desktop-menu';
+import MobileMenu from './header/nav-menu/mobile-menu';
 
 export function Header() {
   const router = useRouter();
@@ -26,18 +23,44 @@ export function Header() {
   return (
     <div className="my-5 flex items-center mr-auto">
       <TitleLogo />
-
-      <NavMenu />
-
+      <DesktopMenu />
       <div className="ml-auto">
         <ModeToggle />
       </div>
 
-      <div className="xl:hidden flex justify-between items-center p-4">
-        <button onClick={() => setIsOpen(!isOpen)}>{isOpen ? <X size={30} /> : <Menu size={30} />}</button>
-      </div>
+      <MobileMenu isOpen={isOpen} setIsOpen={setIsOpen} />
 
-      <MonileNavMenu isOpen={isOpen} />
+      <div className="2xl:hidden flex justify-between items-center p-4">
+        <button onClick={() => setIsOpen(!isOpen)}>
+          {isOpen ? (
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={1.5}
+              stroke="currentColor"
+              className="size-8"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
+            </svg>
+          ) : (
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={1.5}
+              stroke="currentColor"
+              className="size-8"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M3.75 5.25h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5"
+              />
+            </svg>
+          )}
+        </button>
+      </div>
     </div>
   );
 }

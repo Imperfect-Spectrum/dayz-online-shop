@@ -15,6 +15,9 @@ function Lore() {
       <h1 className="mb-12 text-4xl font-extrabold leading-none tracking-tight text-gray-800 dark:text-white text-center mt-5">
         Лор группировок нашего сервера
       </h1>
+      <Link href="/" legacyBehavior passHref>
+        <a>На главную</a>
+      </Link>
       <div className="flex flex-wrap items-center justify-center gap-14">
         {groupsData.map((item, index) => (
           <div key={index} className=" transition duration-500 hover:scale-125">

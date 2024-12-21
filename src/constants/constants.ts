@@ -759,3 +759,85 @@ export const guidesData = [
     imageUrl: ['https://i.ibb.co/qYw1DG7/image.png', 'https://i.ibb.co/yg8KGnM/image.png'],
   },
 ];
+
+export const mainLinks = [
+  {
+    title: 'Главная страница',
+    href: '/',
+    description: 'Быстрый доступ к основной информации о проекте.',
+  },
+  {
+    title: 'О нас',
+    href: '/about-us',
+    description: 'Узнайте больше о нашей команде и проекте.',
+  },
+  {
+    title: 'Личный кабинет',
+    href: '/login',
+    description: 'Управление профилем и настройками.',
+  },
+  {
+    title: 'Таблица лидеров',
+    href: '/leaderboard',
+    description: 'Топ игроков нашего сервера.',
+  },
+];
+
+export const socialChannels = [
+  {
+    title: 'Дискорд AOD/NH',
+    href: 'https://discord.com/invite/CT7Bn6ZmXu',
+    description: 'Ссылка на дискорд серверов AOD/NH.',
+  },
+  {
+    title: 'Дискорд DZ',
+    href: 'https://discord.gg/v2XWb8sftV',
+    description: 'Ссылка на дискорд сервера DZ.',
+  },
+  {
+    title: 'Группа ВК',
+    href: 'https://vk.com/lastohope',
+    description: 'Ссылка на нашу группу ВК.',
+  },
+  {
+    title: 'Поддержать нас на Бусти',
+    href: 'https://boosty.to/lasthope',
+    description: 'Ссылка на наш бусти.',
+  },
+];
+
+export const rules = [
+  {
+    title: 'AOD/NH',
+    href: 'https://docs.google.com/document/d/1qAyml1-ysCopuBSxjhNak2i6wdwt9xAlQvZIoi9yDSY',
+    description: 'Правила серверов AOD/NH.',
+  },
+  {
+    title: 'DZ',
+    href: 'https://docs.google.com/document/d/14dVo19had991FRhEhmoWsMydq67OAPEMM5lImNDxVqw/edit#heading=h.1s7hco9w25wf',
+    description: 'Правила сервера DZ.',
+  },
+];
+
+export const additionalLinks = [
+  {
+    title: 'Лор',
+    href: '/lore',
+    description: 'История и сюжетная основа проекта.',
+  },
+  {
+    title: 'Патч ноуты',
+    href: '/pathes',
+    description: 'Список последних обновлений и изменений.',
+  },
+  {
+    title: 'Гайды',
+    href: '/guides',
+    description: 'Полезные руководства и советы для игроков.',
+  },
+  {
+    title: 'ЧАВО',
+    href: '/faq',
+    description: 'Ответы на часто задаваемые вопросы.',
+  },
+];

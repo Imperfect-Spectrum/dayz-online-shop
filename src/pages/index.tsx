@@ -1,6 +1,7 @@
 import { DownloadSection } from '@/components/main-page/download-section';
 import { FeatureSection } from '@/components/main-page/feature-section';
 import { MainSection } from '@/components/main-page/main-section';
+import Link from 'next/link';
 import React, { useRef } from 'react';
 
 export default function Home() {
@@ -17,6 +18,7 @@ export default function Home() {
 
   return (
     <div>
+      <Link href="/lore">На главную</Link>
       <div>
         <MainSection scrollToInstructions={scrollToInstructions} />
       </div>
