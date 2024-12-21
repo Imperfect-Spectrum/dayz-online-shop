@@ -11,10 +11,10 @@ export function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [pathURL, setPathURL] = useState('');
 
-  useEffect(() => {
-    if (!router.isReady) return;
-    setPathURL(router.pathname);
-  }, [router.isReady, router.pathname]);
+  // useEffect(() => {
+  //   if (!router.isReady) return;
+  //   setPathURL(router.pathname);
+  // }, [router.isReady, router.pathname]);
 
   useEffect(() => {
     setIsOpen(false);
